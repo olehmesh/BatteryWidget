@@ -45,13 +45,9 @@ public class WidgetAdapter implements RemoteViewsFactory {
                 R.layout.list_item);
         remoteViews.setTextViewText(R.id.itemText, list.get(position));
 
-
         Intent clickIntent = new Intent();
         clickIntent.putExtra(MyProvider.ITEM_POSITION, position);
         remoteViews.setOnClickFillInIntent(R.id.itemText, clickIntent);
-
-
-
 
         return remoteViews;
     }
@@ -66,10 +62,10 @@ public class WidgetAdapter implements RemoteViewsFactory {
         return true;
     }
 
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onDataSetChanged() {
+
         list.clear();
 
         BatteryManager bm = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
@@ -87,7 +83,6 @@ public class WidgetAdapter implements RemoteViewsFactory {
         int mVoltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
         float tempTurn = mVoltage / 1000.0f;
         list.add("Voltage: " + tempTurn + " V");
-
 
         int current = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW);
         float currTurn = current / 1000.0f;

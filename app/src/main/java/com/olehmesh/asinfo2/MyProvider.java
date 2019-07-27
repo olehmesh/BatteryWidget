@@ -22,22 +22,22 @@ public class MyProvider extends AppWidgetProvider {
                          int[] appWidgetIds) {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
 
-            RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
-                    R.layout.widget);
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
+                R.layout.widget);
 
-            Intent intentAdapter = new Intent(context, MyService.class);
-            intentAdapter.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds);
-            remoteViews.setRemoteAdapter(R.id.listView, intentAdapter);
+        Intent intentAdapter = new Intent(context, MyService.class);
+        intentAdapter.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds);
+        remoteViews.setRemoteAdapter(R.id.listView, intentAdapter);
 
-            setListClick(remoteViews, context);
+        setListClick(remoteViews, context);
 
-            appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
-            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds,
-                    R.id.listView);
+        appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds,
+                R.id.listView);
 
         Log.d(LOG_TAG, "onUpdate " + Arrays.toString(appWidgetIds));
 
-        }
+    }
 
     void setListClick(RemoteViews rv, Context context) {
         Intent listClickIntent = new Intent(context, MyProvider.class);
@@ -65,4 +65,4 @@ public class MyProvider extends AppWidgetProvider {
         }
     }
 
-    }
+}
