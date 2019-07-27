@@ -1,0 +1,6 @@
+<root>
+  <item name='android.os.BatteryManager'>
+    <annotation name='java.lang.annotation.Deprecated' />
+    <annotation name='android.support.annotation.NonNull' />
+  </item>
+</root>
