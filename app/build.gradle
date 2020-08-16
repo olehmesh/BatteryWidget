@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
 
 android {
     signingConfigs {
@@ -9,9 +12,8 @@ android {
         applicationId "com.olehmesh.asinfo2"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 6
+        versionCode 7
         versionName "1.0"
-
     }
     buildTypes {
         release {
@@ -19,8 +21,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
